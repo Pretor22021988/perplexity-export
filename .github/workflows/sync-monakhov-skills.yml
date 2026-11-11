@@ -1,0 +1,57 @@
+name: Sync monakhov-skills
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout export repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          repository: Pretor22021988/monakhov-skills
+          ref: main
+          token: ${{ secrets.MONAKHOV_SKILLS_TOKEN }}
+          path: monakhov-skills
+          fetch-depth: 0
+
+      - name: Create sync branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b sync/monakhov-skills
+
+      - name: Copy plugins, tools and manifests
+        run: |
+          rm -rf plugins tools
+          cp -a monakhov-skills/plugins .
+          cp -a monakhov-skills/tools . 2>/dev/null || true
+          cp -a monakhov-skills/README.md ./SOURCE-README.md 2>/dev/null || true
+          cp -a monakhov-skills/.claude-plugin ./.claude-plugin 2>/dev/null || true
+
+      - name: Commit changes
+        run: |
+          git add -A
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Sync all plugins, skills and tools from monakhov-skills"
+          git push origin sync/monakhov-skills
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base main \
+            --head sync/monakhov-skills \
+            --title "Sync all plugins, skills and tools from monakhov-skills" \
+            --body "Автоматический перенос всех пакетов, skills и служебных файлов из Pretor22021988/monakhov-skills."
