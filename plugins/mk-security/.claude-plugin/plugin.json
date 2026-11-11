@@ -1,0 +1,7 @@
+{
+  "name": "mk-security",
+  "description": "ИБ и комплаенс: аудит MCP, промпт-инъекции, GDPR, NIST 800-30, реагирование на инциденты",
+  "author": {
+    "name": "Alexander Monakhov"
+  }
+}
