@@ -1,0 +1,56 @@
+{
+  "mcpServers": {
+    "amazingcat": {
+      "type": "http",
+      "url": "https://mcp.amazingcat.net/mcp"
+    },
+    "courtlistener": {
+      "type": "http",
+      "url": "https://mcp.courtlistener.com"
+    },
+    "consensus": {
+      "type": "http",
+      "url": "https://mcp.consensus.app/mcp"
+    },
+    "elicit": {
+      "type": "http",
+      "url": "https://elicit.com/api/mcp"
+    },
+    "scite": {
+      "type": "http",
+      "url": "https://api.scite.ai/mcp"
+    },
+    "scholar-gateway": {
+      "type": "http",
+      "url": "https://connector.scholargateway.ai/mcp"
+    },
+    "pubmed": {
+      "type": "http",
+      "url": "https://pubmed.mcp.claude.com/mcp"
+    },
+    "clinical-trials": {
+      "type": "http",
+      "url": "https://hcls.mcp.claude.com/clinical_trials/mcp"
+    },
+    "firecrawl": {
+      "type": "http",
+      "url": "https://mcp.firecrawl.dev/v2/mcp-search"
+    },
+    "semantica": {
+      "type": "http",
+      "url": "https://mcp.ai-semantica.com/mcp"
+    },
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "cloudflare": {
+      "type": "http",
+      "url": "https://bindings.mcp.cloudflare.com/mcp"
+    },
+    "composio": {
+      "type": "http",
+      "url": "https://connect.composio.dev/mcp"
+    }
+  }
+}
